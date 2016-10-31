@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "ea9ed759-55c4-4d6f-a9de-a4dbf6fa3bc4++4695",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "ea9ed759-55c4-4d6f-a9de-a4dbf6fa3bc4++4695" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "ea9ed759-55c4-4d6f-a9de-a4dbf6fa3bc4++4695" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "617B5B6A-F1E2-4FC9-B533-F1B3354BA2D0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "ea9ed759-55c4-4d6f-a9de-a4dbf6fa3bc4++4695" : "MyEBookTUBIAo\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MyEBook",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MyEBook.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/www.svnchina.com\/svn\/ebooks",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ea9ed759-55c4-4d6f-a9de-a4dbf6fa3bc4++4695"
+    }
+  ]
+}

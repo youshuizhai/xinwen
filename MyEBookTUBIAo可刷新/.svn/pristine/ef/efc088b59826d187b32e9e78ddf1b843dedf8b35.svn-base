@@ -1,0 +1,122 @@
+//
+//  FourViewController.m
+//  MyEBook
+//
+//  Created by lanou on 16/10/27.
+//  Copyright © 2016年 lanou. All rights reserved.
+//
+
+#import "FourViewController.h"
+#import "listCell.h"
+#import "model.h"
+@interface FourViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong)NSMutableArray *dataArray;
+
+
+@end
+
+@implementation FourViewController
+
+-(void)loadData
+{
+    NSString *str=@"http://ebook.meizu.com/api/v1/public/chart/list?ids=%5B8%2C9%2C10%5D";
+    
+    //1.生成url
+    NSURL *url=[NSURL URLWithString:str];
+    //2.创建会话
+    NSURLSession *session=[NSURLSession sharedSession];
+    //3.创建任务
+    NSURLSessionDataTask *task=[session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (data) {
+            //5.解析数据
+            NSDictionary *dict =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            //  NSLog(@"%@",dict);
+            
+            NSDictionary *value=dict[@"value"];
+            NSArray *array=value[@"groups"];
+            
+            for (NSDictionary *dic in array) {
+                model *m=[[model alloc]init];
+                [m setValuesForKeysWithDictionary:dic];
+                [self.dataArray addObject:m];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+        }
+    }];
+    //4. 开启任务
+    [task resume];
+}
+
+-(UITableView *)tableView
+{
+    
+    if (_tableView==nil) {
+        _tableView=[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.delegate=self;
+        _tableView.dataSource=self;
+    }
+    if (_dataArray==nil) {
+        _dataArray=[NSMutableArray array];
+    }
+    
+    return  _tableView;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self loadData];
+    
+    [self.view addSubview:self.tableView];
+    // Do any additional setup after loading the view.
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArray.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    listCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (cell==nil) {
+        cell= [[listCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    model *mod=self.dataArray[indexPath.row];
+    
+    [cell setValuesWithModel:mod];
+    
+    return cell;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+
+{
+    return 30;
+}
+
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

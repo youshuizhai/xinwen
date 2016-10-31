@@ -1,0 +1,23 @@
+//
+//  ModelOfLuBoTu.h
+//  MyEBook
+//
+//  Created by lanou on 16/10/26.
+//  Copyright © 2016年 lanou. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface ModelOfLuBoTu : NSObject
+@property(nonatomic,strong)NSString * content;
+@property(nonatomic,strong)NSString * idx;
+@property(nonatomic,strong)NSString * image;
+@property(nonatomic,strong)NSString * name;
+@property(nonatomic,strong)NSString * showInOld;
+@property(nonatomic,strong)NSString * type;
+@property(nonatomic,strong)NSString * user_type;
+
+@property(nonatomic,strong)NSString *summary;
+@property(nonatomic,strong)NSString *author;
+@property(nonatomic,strong)NSString *category;
+@end

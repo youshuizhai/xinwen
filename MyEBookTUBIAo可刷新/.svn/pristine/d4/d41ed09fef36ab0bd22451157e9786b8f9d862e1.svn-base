@@ -1,0 +1,132 @@
+//
+//  LTView.m
+//  MyEBook
+//
+//  Created by lanou on 16/10/27.
+//  Copyright © 2016年 lanou. All rights reserved.
+//
+
+#import "LTView.h"
+#import "FourViewController.h"
+#define width self.bounds.size.width*1.0
+#define height self.bounds.size.height*1.0
+@implementation LTView
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
+
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    
+    
+    self=[super initWithFrame:frame];
+    if(self){
+        /*********************** 男频按钮 *******************************/
+
+        
+        self.btn1=[UIButton buttonWithType:UIButtonTypeCustom];
+        self.btn1.frame=CGRectMake(width/20, height/2.5, width/8, height/2);
+        //设置button的两种状态
+        [self.btn1 setImage:[UIImage imageNamed:@"GG"] forState:UIControlStateNormal];
+        [self.btn1 setImage:[UIImage imageNamed:@"GY"] forState:UIControlStateSelected];
+        [self addSubview:self.btn1];
+        [self.btn1 addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
+        //
+        self.label1=[[UILabel alloc] initWithFrame:CGRectMake(width/20, height/1.2, width/8, height/2)];
+        // self.titleLabel.textColor=[UIColor redColor];
+        self.label1.text=@"男频";
+        self.label1.font = [UIFont fontWithName:@"Helvetica" size:14.f];
+        self.label1.textColor=[UIColor colorWithRed:1.000 green:0.520 blue:0.185 alpha:1.000];
+        [self addSubview:self.label1];
+        
+        /**************************  女频按钮  ****************************/
+        
+        self.btn2=[UIButton buttonWithType:UIButtonTypeCustom];
+        self.btn2.frame=CGRectMake(width/3.5, height/2.5, width/8, height/2);
+        //设置button的两种状态
+        [self.btn2 setImage:[UIImage imageNamed:@"YY"] forState:UIControlStateNormal];
+        [self.btn2 setImage:[UIImage imageNamed:@"GY"] forState:UIControlStateSelected];
+        [self addSubview:self.btn2];
+        [self.btn2 addTarget:self action:@selector(btnAction2) forControlEvents:UIControlEventTouchUpInside];
+        //
+        self.label2=[[UILabel alloc] initWithFrame:CGRectMake(width/3.5, height/1.2, width/8, height/2)];
+        // self.titleLabel.textColor=[UIColor redColor];
+        self.label2.text=@"女频";
+        self.label2.font = [UIFont fontWithName:@"Helvetica" size:14.f];
+        self.label2.textColor=[UIColor colorWithRed:1.000 green:0.520 blue:0.185 alpha:1.000];
+        [self addSubview:self.label2];
+        
+         /**************************  出版读物 按钮  ****************************/
+        
+        self.btn3=[UIButton buttonWithType:UIButtonTypeCustom];
+        self.btn3.frame=CGRectMake(width/1.9, height/2.5, width/8, height/2);
+        //设置button的两种状态
+        [self.btn3 setImage:[UIImage imageNamed:@"DW"] forState:UIControlStateNormal];
+        [self.btn3 setImage:[UIImage imageNamed:@"DW1"] forState:UIControlStateSelected];
+        [self addSubview:self.btn3];
+        [self.btn3 addTarget:self action:@selector(btnAction3) forControlEvents:UIControlEventTouchUpInside];
+        //
+        self.label3=[[UILabel alloc] initWithFrame:CGRectMake(width/1.9, height/1.2, width/8, height/2)];
+        // self.titleLabel.textColor=[UIColor redColor];
+        self.label3.text=@"刊物";
+        self.label3.font = [UIFont fontWithName:@"Helvetica" size:14.f];
+        self.label3.textColor=[UIColor colorWithRed:1.000 green:0.520 blue:0.185 alpha:1.000];
+        [self addSubview:self.label3];
+        
+        /**************************  排行榜 按钮  ****************************/
+        
+        self.btn4=[UIButton buttonWithType:UIButtonTypeCustom];
+        self.btn4.frame=CGRectMake(width/1.3, height/2.5, width/8, height/2);
+        //设置button的两种状态
+        [self.btn4 setImage:[UIImage imageNamed:@"PH"] forState:UIControlStateNormal];
+        [self.btn4 setImage:[UIImage imageNamed:@"PH1"] forState:UIControlStateSelected];
+        [self addSubview:self.btn4];
+        [self.btn4 addTarget:self action:@selector(btnAction4) forControlEvents:UIControlEventTouchUpInside];
+        //
+        self.label4=[[UILabel alloc] initWithFrame:CGRectMake(width/1.3, height/1.2, width/5, height/2)];
+        // self.titleLabel.textColor=[UIColor redColor];
+        self.label4.text=@"排行榜";
+        self.label4.font = [UIFont fontWithName:@"Helvetica" size:14.f];
+        self.label4.textColor=[UIColor colorWithRed:1.000 green:0.520 blue:0.185 alpha:1.000];
+        [self addSubview:self.label4];
+    
+    }
+    return self;
+}
+
+-(void)btnAction{
+    NSLog(@"点击了男频");
+}
+-(void)btnAction2{
+    NSLog(@"点击了女频");
+}
+-(void)btnAction3{
+    NSLog(@"点击了刊物");
+}
+-(void)btnAction4{
+    NSLog(@"点击了排行");
+//    FourViewController *fourVC=[[FourViewController alloc]init];
+//
+////   UIViewController *viewcon =[self viewController];
+////    [viewcon.navigationController pushViewController: fourVC animated:YES];
+////    
+  }
+
+//- (UIViewController *)viewController {
+//    for (UIView* next = [self superview]; next; next = next.superview) {
+//        UIResponder *nextResponder = [next nextResponder];
+//        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+//            return (UIViewController *)nextResponder;
+//        }
+//    }
+//    return nil;
+//}
+//
+
+
+@end

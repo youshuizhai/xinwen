@@ -1,0 +1,14 @@
+//
+//  TwoCell.h
+//  MyEBook
+//
+//  Created by lanou on 16/10/27.
+//  Copyright © 2016年 lanou. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "LTView.h"
+@interface TwoCell : UITableViewCell
+@property(nonatomic,strong)LTView * ltView;
+@property(nonatomic,strong)UIView * lineView;
+@end

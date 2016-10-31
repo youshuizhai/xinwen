@@ -1,0 +1,140 @@
+//
+//  AppDelegate.m
+//  MyEBook
+//
+//  Created by lanou on 16/10/26.
+//  Copyright © 2016年 lanou. All rights reserved.
+//
+
+#import "AppDelegate.h"
+#import "ViewController.h"
+#import "SecondViewController.h"
+#import "ThirstViewController.h"
+#import "FourViewController.h"
+
+@interface AppDelegate ()<UITabBarControllerDelegate>
+
+@end
+
+@implementation AppDelegate
+
+-(UIViewController *)creatVCWithClass:(Class)class title:(NSString *)title
+                          normalImage:(NSString *)normalImage
+                        selectedImage:(NSString *)selectedImage
+{
+    UIViewController * vc=[[class alloc] init];
+    UIImage * norImage=[UIImage imageNamed:normalImage];
+    norImage=[norImage imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    //
+    UIImage * selImage=[UIImage imageNamed:selectedImage];
+    selImage=[selImage imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    
+    vc.tabBarItem=[[UITabBarItem alloc]initWithTitle:title image:norImage selectedImage:selImage];
+    return  vc;
+}
+
+//SEL:接受的类型是方法类型
+//Class：类的类型
+-(UITabBarController*)creatTabbarController
+{
+    ViewController * firstVC=(ViewController *)[self creatVCWithClass:[ViewController class]title:@"书城" normalImage:@"01-2" selectedImage:@"01-1"];
+    SecondViewController * secondVC=(SecondViewController *)[self creatVCWithClass:[SecondViewController class]title:@"主页" normalImage:@"02-2.png" selectedImage:@"02-1.png"];
+    ThirstViewController * thirstVC=(ThirstViewController *)[self creatVCWithClass:[ThirstViewController class]title:@"发现" normalImage:@"03-2.png" selectedImage:@"03-1.png"];
+    FourViewController * fourVC=(FourViewController *)[self creatVCWithClass:[FourViewController class]title:@"联系人" normalImage:@"04-2.png" selectedImage:@"04-1.png"];
+    UINavigationController  *firstNav=[[UINavigationController alloc] initWithRootViewController:firstVC];
+    UINavigationController  *secondNav=[[UINavigationController alloc] initWithRootViewController:secondVC];
+    UINavigationController  *thirstNav=[[UINavigationController alloc] initWithRootViewController:thirstVC];
+    UINavigationController  *fourNav=[[UINavigationController alloc] initWithRootViewController:fourVC];
+    
+    
+    //
+    UITabBarController * tabBarVC=[[UITabBarController alloc] init];
+    //被管理的视图控制器数组
+    //当多于5个时会出现more，只能显示前面4个，剩余的在more中
+    //数组中顺序为显示时从左到右顺序
+    tabBarVC.viewControllers=@[firstNav,secondNav,thirstNav,fourNav,];
+    //设置默认选中的视图控制器--下标
+    tabBarVC.selectedIndex=0;
+    //设置默认选中的视图控制器--控制器
+   // tabBarVC.selectedViewController=firstNav;
+    
+    
+    //被选中的标题颜色
+    tabBarVC.tabBar.tintColor=[UIColor greenColor];
+    //设置标签栏是否半透明
+    //tabbar 的高度为49
+    //当为半透明的，视图控制器的根视图高为全屏
+    //当为不透明的，视图控制器的根视图高为全屏-49
+    tabBarVC.tabBar.translucent=NO;
+    //标签栏的背景颜色--标签栏为不透明状态
+    tabBarVC.tabBar.barTintColor=[UIColor blackColor];
+    //影藏标签栏
+    // tabBarVC.tabBar.hidden=YES;
+  
+    /*
+    //设置角标
+    firstVC.tabBarItem.badgeValue=@"未读";
+    secondVC.tabBarItem.badgeValue=@"9";
+    thirstVC.tabBarItem.badgeValue=@"66";
+    fourVC.tabBarItem.badgeValue=@"33";
+    fifthVC.tabBarItem.badgeValue=@"55";
+    
+    //清除角标
+    firstVC.tabBarItem.badgeValue=@"";
+    //  firstVC.tabBarItem.badgeValue=nil;
+     */
+    //代理方法
+    tabBarVC.delegate=self;
+    
+    
+    return tabBarVC;
+}
+
+
+
+
+
+
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    self.window.rootViewController=[ self creatTabbarController];
+   
+    
+    
+    //修改所有的导航栏的属性
+    [[UINavigationBar appearance]setBarTintColor:[UIColor colorWithRed:0.520 green:0.645 blue:1.000 alpha:1.000]];
+    [[UINavigationBar appearance]setTranslucent:NO];
+    //[[UINavigationBar appearance] setTintColor:[UIColor greenColor]];
+    
+    // Override point for customization after application launch.
+    return YES;
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+@end
