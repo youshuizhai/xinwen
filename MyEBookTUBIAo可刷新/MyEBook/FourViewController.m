@@ -132,9 +132,9 @@ static NSUInteger count = 2;
     [super viewDidLoad];
     
     
-    
+    /*
     NSLog(@"aaaaaa");
-    
+    */
     
    
     
