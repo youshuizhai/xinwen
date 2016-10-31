@@ -6,16 +6,23 @@
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "ea9ed759-55c4-4d6f-a9de-a4dbf6fa3bc4++4695" : 0
+    "ea9ed759-55c4-4d6f-a9de-a4dbf6fa3bc4++4695" : 0,
+    "D37D0F637422A70B95C517CD885298626DF84C88" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "617B5B6A-F1E2-4FC9-B533-F1B3354BA2D0",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "ea9ed759-55c4-4d6f-a9de-a4dbf6fa3bc4++4695" : "MyEBookTUBIAo\/"
+    "ea9ed759-55c4-4d6f-a9de-a4dbf6fa3bc4++4695" : "MyEBookTUBIAo\/",
+    "D37D0F637422A70B95C517CD885298626DF84C88" : ""
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MyEBook",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MyEBook.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/youshuizhai\/xinwen.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D37D0F637422A70B95C517CD885298626DF84C88"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/www.svnchina.com\/svn\/ebooks",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
